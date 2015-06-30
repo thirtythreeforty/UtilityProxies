@@ -65,6 +65,12 @@ void TranspositionProxyModel::setSourceModel(QAbstractItemModel* newSourceModel)
 {
     QAbstractItemModel* oldSourceModel = sourceModel();
 
+    if(oldSourceModel == newSourceModel) {
+        return;
+    }
+
+    beginResetModel();
+
     if(oldSourceModel) {
         disconnect(oldSourceModel, &QAbstractItemModel::columnsAboutToBeInserted,
                    this,           &TranspositionProxyModel::handle_columnsAboutToBeInserted);
@@ -150,6 +156,8 @@ void TranspositionProxyModel::setSourceModel(QAbstractItemModel* newSourceModel)
         connect(newSourceModel, &QAbstractItemModel::modelReset,
                 this,           &TranspositionProxyModel::handle_modelReset);
     }
+
+    endResetModel();
 }
 
 QModelIndex TranspositionProxyModel::mapToSource(const QModelIndex& proxyIndex) const
