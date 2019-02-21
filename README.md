@@ -3,6 +3,8 @@ They are used to manipulate a source model either for display in a widget or for
 Qt model proxies are typically fairly tedious to write because of the large number of events they must handle (moving and removal of columns and rows, etc.).
 Although it's always *possible* to write a proxy model that performs precisely the transformation you want, this is error-prone, and it's usually also possible to implement this transformation in terms of a few basic operations, such as transposition and sort.
 
+The library is licensed under the [wxWidgets license](https://www.wxwidgets.org/about/licence/), which means that it is licensed under the LGPL, but with a linking exception that allows proprietary software to easily use the library with few restrictions.
+
 These classes aim to alleviate the pain of writing custom proxies where a chain of one or more proxies would suffice.
 They are designed to be chained together with each other and with other proxies, either those provided by the user or built-in Qt proxies.
 Below is a list of the provided classes with a brief description of each.
